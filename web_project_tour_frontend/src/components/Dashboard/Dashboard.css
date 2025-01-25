@@ -1,0 +1,256 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: min-content auto min-content;
+  grid-gap: 12px;
+  padding: 48px;
+  width: 100vw; 
+  min-height: 100vh;
+  margin: 0; 
+  background-color: #e2e2e2;
+  overflow-x: hidden;
+  box-sizing: border-box; 
+}
+
+.dashboard__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-top: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.dashboard__item:hover{
+  box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.4);
+}
+
+.dashboard__title {
+  color: black;
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0 4px 12px;
+}
+
+.dashboard__offers {
+  grid-column: span 1;
+}
+
+.dashboard__reviews {
+  grid-column: span 1;
+}
+
+.dashboard__form {
+  grid-column: span 2;
+}
+
+.dashboard-fieldset__form{
+  width: 80%;
+}
+
+.dashboard-fieldset__title{
+  color: black;
+  font-weight: bold;
+  font-size: 36px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.dashboard__button{
+  font-size: 20px;
+  max-width: 400px;
+}
+
+.dashboard__button-edit,
+.dashboard__button-create {
+  background-color: #3D3D3D;
+  border: none;
+  padding: 10px 20px;
+  width: 250px;
+  color: #FFFAEC;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard__button-create {
+  font-size: 16px;
+  margin-top: 10px;
+  width: 280px;
+}
+
+.dashboard__button-delete {
+  background-color: #ff4949;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 280px;
+  color: #FFFAEC;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard__button-add {
+  background-color: #578E7E;
+  border: none;
+  padding: 10px 20px;
+  width: 250px;
+  color: #FFFAEC;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard__button-logout {
+  background-color: #ff4949;
+  border: none;
+  width: 300px;
+  padding: 10px 20px;
+  color: #FFFAEC;
+  font-size: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background-color 0.3s ease;
+}
+
+.dashboard__button-leave{
+  background-color: #3D3D3D;
+  border: none;
+  width: 300px;
+  padding: 10px 20px;
+  color: #FFFAEC;
+  font-size: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: auto;
+}
+
+.dashboard__button-add:hover,
+.dashboard__button-edit:hover,
+.dashboard__button-create:hover,
+.dashboard__button-logout:hover,
+.dashboard__button-delete:hover {
+  opacity: 90%;
+  transform: scale(0.99);
+}
+
+.dashboard__button-add:active,
+.dashboard__button-edit:active,
+.dashboard__button-create:active,
+.dashboard__button-logout:active,
+.dashboard__button-delete:active {
+  transform: scale(0.96);
+}
+
+.dashboard__button-create:disabled,
+.dashboard__button-delete:disabled {
+  opacity: 50%;
+}
+
+.dashboard__input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border: 2px solid #ddd; 
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: white;
+  color: #000000;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.dashboard__input:focus {
+  outline: none;
+  border-color: #F5ECD5;
+  transition: border-color 0.3s ease;
+}
+
+.dashboard__form-button {
+  background-color: #CD5D7D;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dashboard__form-button:hover {
+  background-color: #c0392b;
+}
+
+.dashboard__error {
+  color: black;
+  font-size: 16px;
+  font-weight: 500;
+  opacity: 0;
+  height: 0;
+  transition: height 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  margin: 0;
+  text-align: start;
+  margin-left: 5px;
+}
+
+.dashboard__error-password {
+  margin-bottom: 10px;
+}
+
+.dashboard__error_visible {
+  opacity: 1;
+  height: auto;
+  visibility: visible;
+}
+
+.dashboard__error_hidden {
+  opacity: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    width: calc(100%);
+  }
+
+  .dashboard__button-add,
+  .dashboard__button-remove,
+  .dashboard__button-edit,
+  .dashboard__button-logout, .dashboard__button-leave {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px){
+  .dashboard{
+    padding: 8px;
+  }
+
+  .dashboard__title{
+    font-size: 24px;
+  }
+
+  .dashboard-fieldset__title{
+    font-size: 28px;
+  }
+
+  .dashboard__button{
+    font-size: 15px;
+  }
+}

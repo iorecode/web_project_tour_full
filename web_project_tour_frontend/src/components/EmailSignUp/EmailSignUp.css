@@ -1,0 +1,130 @@
+.email {
+  background-color: #3D3D3D;
+  width: 100%;
+  padding: 30px;
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.email__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px;
+  padding-bottom: 5px;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+}
+
+.email__form-button {
+  background-color: #578E7E;
+  border: none;
+  padding: 10px 20px;
+  width: auto;
+  color: #FFFAEC;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.22s ease;
+}
+
+.email__form-button:hover {
+  background-color: #36584f;
+}
+
+.email__form-button:active {
+  transform: scale(0.96);
+}
+
+.email__form-button:focus{
+  border: none;
+}
+
+.email__form-button:disabled{
+  background-color: #222222;
+}
+
+.email__title {
+  color: #FFFAEC;
+  font-weight: 800;
+  margin: 0 auto 25px;
+  font-size: 32px;
+  text-align: center;
+}
+
+.email__form-input {
+  background-color: #3D3D3D;
+  color: #FFFAEC;
+  border-radius: 8px;
+  border: 2px solid #F5ECD5;
+  padding: 10px;
+  font-size: 16px;
+  flex-grow: 1;
+  min-width: 250px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.email__form-input::placeholder{
+  color: #F5ECD5;
+  font-style: italic;
+  opacity: 90%;
+  transition: opacity 0.2s ease;
+}
+
+.email__form-input::placeholder:focus{
+  opacity: 20%;
+}
+
+.email__form-input:focus {
+  outline: none;
+  border-color: #F5ECD5;
+  transition: border-color 0.3s ease;
+}
+
+.email__form-input:focus::placeholder {
+  opacity: 60%; 
+}
+
+.email__error {
+  font-size: 16px;
+  font-weight: 400;
+  color: #FFFAEC;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+  margin-top: 5px;
+  position: absolute;
+  bottom: -20px;
+  left: 16px;
+}
+
+.email__error_hidden {
+  height: 0;
+  opacity: 0;
+}
+
+.email__error_visible {
+  height: 20px;
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .email__title {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .email__form-input {
+    padding: 5px;
+  }
+
+  .email__error {
+    font-size: 12px;
+  }
+}

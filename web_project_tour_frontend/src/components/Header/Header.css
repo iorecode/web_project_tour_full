@@ -1,0 +1,95 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: calc(62vh - 60px); 
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; 
+  margin: 0;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../../assets/marek-piwnicki-jpLbO6lXTEk-unsplash.jpg'); 
+  background-size: cover;
+  background-position: center;
+  filter: blur(1px); 
+  z-index: -1; 
+  outline: none;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.header:hover::before {
+  filter: blur(3px); 
+}
+  
+  .header__content {
+    max-width: 600px; 
+    color: white;
+    margin: 0 calc(100% - 90%);
+    padding-bottom: 20px;
+    transition: 0.15s ease;
+  }
+  .header__content:hover ~ .header::before {
+    filter: blur(12px); 
+  }
+
+  .header__content:hover{
+    transform: scale(1.15);
+  }
+  
+  .header__title {
+    font-size: 52px;
+    font-weight: bold;
+    margin: 0 0 20px 0; 
+    text-align: start;
+  }
+  
+  .header__text {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+    text-align: start;
+  }
+
+  .header__link{
+    text-decoration: underline;
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    line-height: 60px;
+  }
+  
+@media screen and (max-width: 728px) {
+  .header__title{
+    font-size: 48px;
+  }
+ 
+  .header__text{
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 378px) {
+  .header{
+    height: 60vh;
+  }
+
+  .header__title{
+    font-size: 42px;
+    padding-top: 55px;
+  }
+ 
+  .header__text{
+    font-size: 18px;
+  }
+
+}
