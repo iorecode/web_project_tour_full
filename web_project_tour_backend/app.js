@@ -80,10 +80,10 @@ if (process.env.NODE_ENV !== 'test') {
   mongoose
     .connect(process.env.MONGO_URI)
     .then(() => {
-      console.log('Database connected successfully');
+      console.log('Database conectada');
     })
     .catch((err) => {
-      console.error('Database connection error:', err);
+      console.error('Erro ao conectar com database:', err);
     });
 }
 

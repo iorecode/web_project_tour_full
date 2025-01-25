@@ -29,7 +29,7 @@ function generateTestToken() {
 
   const token = jwt.sign(payload, JWT_SECRET);
 
-  return token
+  return token;
 }
 
 module.exports = {
