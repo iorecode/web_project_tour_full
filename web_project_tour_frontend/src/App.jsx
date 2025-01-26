@@ -45,7 +45,6 @@ function App() {
           }),
         ]);
         
-        console.log(reviews)
         setOffers(offers);
         setReviews(reviews);
         setTopReviews(topReviews);

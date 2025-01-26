@@ -25,7 +25,6 @@ const getOffers = async (req, res, next) => {
 // Adiciona uma oferta a DB com titulo descricao e imagem
 const addOffer = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { title, description, price } = req.body;
     const image = req.file
       ? [
@@ -37,8 +36,6 @@ const addOffer = async (req, res, next) => {
           },
         ]
       : null;
-
-    console.log('Image URL:', image[0].url); // Log the generated URL for verification
 
     if (title && description && image && price) {
       const newOffer = await Offer.create({ title, description, price, image });

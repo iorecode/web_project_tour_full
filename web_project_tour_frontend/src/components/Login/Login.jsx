@@ -54,7 +54,6 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
 
     function handleTestAccess() {
       const token = createTestAccess();
-      console.log("Token:", token);
       if(token){
         if(isRememberChecked){
           localStorage.setItem("jwt", token)
