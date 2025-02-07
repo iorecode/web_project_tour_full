@@ -93,3 +93,19 @@
   }
 
 }
+
+@media screen and (max-height: 378px) {
+  .header{
+    height: 60vh;
+  }
+
+  .header__title{
+    font-size: 42px;
+    padding-top: 55px;
+  }
+ 
+  .header__text{
+    font-size: 18px;
+  }
+
+}

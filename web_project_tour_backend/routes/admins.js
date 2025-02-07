@@ -19,7 +19,7 @@ router.post(
           'string.pattern.base':
             'A senha deve conter pelo menos 6 caracteres, incluindo uma letra maiúscula, uma letra minúscula, um número e um caractere especial.',
         }),
-      master: Joi.boolean().optional(),
+      master: Joi.boolean().required(),
     }),
   }),
   verifyMasterAdmin.verifyMasterAdmin,

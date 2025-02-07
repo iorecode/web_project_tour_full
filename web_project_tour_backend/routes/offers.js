@@ -80,19 +80,18 @@ router.delete(
 
 router.patch(
   '/:id/edit',
-  upload.single('image'), // Step 1: Process the file and form data with multer
+  upload.single('image'), 
   (req, res, next) => {
     console.log('Received ID:', req.params.id);
     console.log('Received Body:', req.body);
 
-    // Step 2: Validate the fields manually after multer processes the data
     const schema = Joi.object({
       title: Joi.string().min(2).max(100).optional(),
       description: Joi.string().min(2).max(5000).optional(),
       price: Joi.number().integer().min(1).max(1000000).optional(),
       image: Joi.any().optional(),
     })
-      .or('title', 'description', 'price', 'image') // Ensure at least one field is provided
+      .or('title', 'description', 'price', 'image') 
       .messages({
         'object.missing':
           'At least one field (title, description, price, or image) must be provided.',
@@ -101,7 +100,6 @@ router.patch(
     const validationResult = schema.validate(req.body);
 
     if (validationResult.error) {
-      // If validation fails, remove the uploaded file
       if (req.file) {
         const filePath = path.join(
           __dirname,
@@ -116,7 +114,6 @@ router.patch(
       return next(new CustomError(validationResult.error.message, 400));
     }
 
-    // Validation passed; if a file was uploaded, attach its data to req.body
     if (req.file) {
       req.body.image = {
         url: `/uploads/${encodeURIComponent(req.file.filename)}`,
@@ -130,16 +127,15 @@ router.patch(
   },
   async (err, req, res, next) => {
     if (err.joi && req.file) {
-      // Cleanup uploaded file if validation error occurred
       fs.unlink(req.file.path, (fsErr) => {
         if (fsErr)
           console.error('Failed to delete file after validation error:', fsErr);
       });
     }
     console.error('Validation Error:', err.joi || err);
-    next(err); // Pass the error to the error handler
+    next(err); 
   },
-  offerControllers.editOffer // Step 3: Pass validated data to the controller
+  offerControllers.editOffer
 );
 
 module.exports = router;

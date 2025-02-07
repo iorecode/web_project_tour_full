@@ -32,25 +32,34 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
 
   async function handleLoginSubmit(e) {
     e.preventDefault();
+    
     if (!isFormValid) {
       return setErrorMessage("Email ou senha inválidos.");
-    } else {
-      const cleanEmail = email.trim();
-      const cleanPassword = password.trim();
-      const token = onLogin({ email: cleanEmail, password:cleanPassword });
-        if(token){
-        if(isRememberChecked){
-          localStorage.setItem("jwt", token)
+    }
+  
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
+  
+    try {
+      const token = await onLogin({ email: cleanEmail, password: cleanPassword });
+      console.log(token)
+      if (token) {
+        console.log(token)
+        if (isRememberChecked) {
+          localStorage.setItem("jwt", token);
         } else {
           sessionStorage.setItem("jwt", token);
         }
         setErrorMessage("");
         onLoginSuccess();
-        } else {
-          return setErrorMessage("Email ou senha inválidos.");
-        }
+      } else {
+        setErrorMessage("Email ou senha inválidos.");
       }
+    } catch (error) {
+      console.error("Erro durante o login:", error);
+      setErrorMessage(error.message);
     }
+  }
 
     function handleTestAccess() {
       const token = createTestAccess();

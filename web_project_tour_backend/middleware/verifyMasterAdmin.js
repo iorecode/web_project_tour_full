@@ -1,12 +1,12 @@
+/* eslint-disable prettier/prettier */
 const CustomError = require('../utils/customError');
 const { Admin } = require('../models/admin');
 const jwt = require('jsonwebtoken');
-// eslint-disable-next-line no-undef
 const { JWT_SECRET } = process.env;
 
 const verifyMasterAdmin = async (req, res, next) => {
   try {
-    const token = req.headers.authorization?.replace('Bearer ', '');
+    const token = req.headers.authorization.replace('Bearer ', '');
     if (!token) {
       throw new CustomError('Token de autorizacao faltando', 401);
     }

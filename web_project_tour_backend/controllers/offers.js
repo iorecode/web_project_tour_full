@@ -29,7 +29,7 @@ const addOffer = async (req, res, next) => {
     const image = req.file
       ? [
           {
-            url: `https://api.sergiotur.com.br/uploads/${encodeFileName(req.file.filename)}`,
+            url: `http://localhost:3000/uploads/${encodeFileName(req.file.filename)}`,
             filename: req.file.originalname,
             size: req.file.size,
             contentType: req.file.mimetype,
@@ -100,7 +100,7 @@ const editOffer = async (req, res, next) => {
 
     if (req.file) {
       const newImage = {
-        url: `https://api.sergiotur.com.br/uploads/${encodeFileName(req.file.filename)}`,
+        url: `http://localhost:3000/uploads/${encodeFileName(req.file.filename)}`,
         filename: req.file.originalname,
         size: req.file.size,
         contentType: req.file.mimetype,

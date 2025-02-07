@@ -84,6 +84,12 @@ export default function AdminPopup({ onCreate, onEdit, onDelete, action, onClose
       }));
     } else {
       if (type === "file") {
+        const file = files[0];
+        const maxSize = 12 * 1024 * 1024;
+        if (file && file.size > maxSize) {
+          alert("A imagem excede o limite de 12MB. Escolha uma menor.");
+          return;
+        }
         setOfferFormData((prev) => ({ ...prev, [name]: files[0] })); 
       } else {
         setOfferFormData((prev) => ({ ...prev, [name]: value }));
@@ -202,7 +208,7 @@ export default function AdminPopup({ onCreate, onEdit, onDelete, action, onClose
                 accept="image/*" 
                 name="image"
                 className="admin-popup__input admin-popup__input-image" 
-                onChange={(e) => handleChange({ target: { name: 'image', value: e.target.files[0] } })}
+                onChange={handleChange} 
               />
             </>
           )}
