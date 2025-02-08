@@ -1,5 +1,5 @@
 class API {
-    constructor(baseURL) {
+    constructor(baseURL = import.meta.env.VITE_API_BASE_URL) {
       this._baseURL = baseURL;
     }
   
@@ -277,6 +277,6 @@ class API {
       }
   }
       
-  const api = new API('http://localhost:3000');
+  const api = new API();
   
   export default api;
