@@ -31,6 +31,12 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const closePopupsOnEsc = (e) => {
+      if (e.keyCode === 27){
+        closePopup();
+      }
+    };
+    window.addEventListener('keydown', closePopupsOnEsc);
     const fetchData = async () => {
       try {
         const [offers, reviews, topReviews] = await Promise.all([
