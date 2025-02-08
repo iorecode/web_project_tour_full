@@ -42,9 +42,7 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
   
     try {
       const token = await onLogin({ email: cleanEmail, password: cleanPassword });
-      console.log(token)
       if (token) {
-        console.log(token)
         if (isRememberChecked) {
           localStorage.setItem("jwt", token);
         } else {
