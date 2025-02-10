@@ -8,7 +8,6 @@ const encodeFileName = require('../utils/encodeName');
 // Recebe todas ofertas na DB
 const getOffers = async (req, res, next) => {
   try {
-    console.log("reached")
     const allOffers = await Offer.find({});
 
     if (allOffers.length === 0) {
@@ -17,7 +16,6 @@ const getOffers = async (req, res, next) => {
 
     res.status(200).send(allOffers);
   } catch (err) {
-    console.log(err);
     next(new CustomError('Erro desconhecido', 500));
   }
 };

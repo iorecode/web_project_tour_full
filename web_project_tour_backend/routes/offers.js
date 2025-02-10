@@ -3,9 +3,9 @@ const { celebrate, Joi } = require('celebrate');
 const fs = require('fs');
 const path = require('path');
 const offerControllers = require('../controllers/offers');
-const upload = require('../middleware/fileManagement.js');
+const upload = require('../middleware/fileManagement');
 const CustomError = require('../utils/customError');
-const encodeFileName = require('../utils/encodeName.js');
+const encodeFileName = require('../utils/encodeName');
 
 const router = express.Router();
 
@@ -39,7 +39,6 @@ router.post(
 
     if (validationResult.error) {
       if (req.file) {
-        console.log(req.file);
         const filePath = path.join(
           __dirname,
           '../uploads',
@@ -82,8 +81,6 @@ router.patch(
   '/:id/edit',
   upload.single('image'), 
   (req, res, next) => {
-    console.log('Received ID:', req.params.id);
-    console.log('Received Body:', req.body);
 
     const schema = Joi.object({
       title: Joi.string().min(2).max(100).optional(),

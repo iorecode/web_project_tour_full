@@ -14,12 +14,12 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
-    setIsFormValid(emailRegex.test(e.target.value) && password.length >= 8);
+    setIsFormValid(emailRegex.test(e.target.value) && password.length >= 6);
   }
 
   function handlePasswordChange(e) {
     setPassword(e.target.value);
-    setIsFormValid(emailRegex.test(email) && e.target.value.length >= 8);
+    setIsFormValid(emailRegex.test(email) && e.target.value.length >= 6);
   }
 
   function handleCheckboxChange(e) {
@@ -32,14 +32,13 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
 
   async function handleLoginSubmit(e) {
     e.preventDefault();
-    
     if (!isFormValid) {
       return setErrorMessage("Email ou senha inválidos.");
     }
   
     const cleanEmail = email.trim();
     const cleanPassword = password.trim();
-  
+
     try {
       const token = await onLogin({ email: cleanEmail, password: cleanPassword });
       if (token) {
@@ -65,7 +64,6 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
         if(isRememberChecked){
           localStorage.setItem("jwt", token)
         } else {
-          // Store token in sessionStorage for session-based login
           sessionStorage.setItem("jwt", token);
         }
         setErrorMessage("");

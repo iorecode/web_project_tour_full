@@ -47,7 +47,6 @@ router.post(
 router.patch(
   '/:id/edit',
   (req, res, next) => {
-    console.log(req.body);
     next();
   },
   celebrate({

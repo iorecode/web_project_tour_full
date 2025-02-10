@@ -214,7 +214,8 @@ function App() {
 
   const handleLoginSubmit = async ({ email, password }) => {
     try{
-      await api.login({ email, password}).then((res) => {return res})
+      const token = await api.login({ email, password}).then((res) => {return res})
+      return token
     }
     catch(error){
       console.error("Erro ao fazer login:", error);
