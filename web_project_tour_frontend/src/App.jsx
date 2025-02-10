@@ -31,6 +31,12 @@ function App() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    const closePopupsOnEsc = (e) => {
+      if (e.keyCode === 27){
+        closePopup();
+      }
+    };
+    window.addEventListener('keydown', closePopupsOnEsc);
     const fetchData = async () => {
       try {
         const [offers, reviews, topReviews] = await Promise.all([
@@ -45,7 +51,6 @@ function App() {
           }),
         ]);
         
-        console.log(reviews)
         setOffers(offers);
         setReviews(reviews);
         setTopReviews(topReviews);
@@ -209,7 +214,8 @@ function App() {
 
   const handleLoginSubmit = async ({ email, password }) => {
     try{
-      await api.login({ email, password}).then((res) => {return res})
+      const token = await api.login({ email, password}).then((res) => {return res})
+      return token
     }
     catch(error){
       console.error("Erro ao fazer login:", error);

@@ -8,7 +8,6 @@ const encodeFileName = require('../utils/encodeName');
 // Recebe todas ofertas na DB
 const getOffers = async (req, res, next) => {
   try {
-    console.log("reached")
     const allOffers = await Offer.find({});
 
     if (allOffers.length === 0) {
@@ -17,7 +16,6 @@ const getOffers = async (req, res, next) => {
 
     res.status(200).send(allOffers);
   } catch (err) {
-    console.log(err);
     next(new CustomError('Erro desconhecido', 500));
   }
 };
@@ -25,20 +23,17 @@ const getOffers = async (req, res, next) => {
 // Adiciona uma oferta a DB com titulo descricao e imagem
 const addOffer = async (req, res, next) => {
   try {
-    console.log(req.body);
     const { title, description, price } = req.body;
     const image = req.file
       ? [
           {
-            url: `https://api.sergiotur.com.br/uploads/${encodeFileName(req.file.filename)}`,
+            url: `http://localhost:3000/uploads/${encodeFileName(req.file.filename)}`,
             filename: req.file.originalname,
             size: req.file.size,
             contentType: req.file.mimetype,
           },
         ]
       : null;
-
-    console.log('Image URL:', image[0].url); // Log the generated URL for verification
 
     if (title && description && image && price) {
       const newOffer = await Offer.create({ title, description, price, image });
@@ -103,7 +98,7 @@ const editOffer = async (req, res, next) => {
 
     if (req.file) {
       const newImage = {
-        url: `https://api.sergiotur.com.br/uploads/${encodeFileName(req.file.filename)}`,
+        url: `http://localhost:3000/uploads/${encodeFileName(req.file.filename)}`,
         filename: req.file.originalname,
         size: req.file.size,
         contentType: req.file.mimetype,

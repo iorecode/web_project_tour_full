@@ -54,44 +54,6 @@ const createAdmin = async (req, res, next) => {
   }
 };
 
-// const deleteAdmin = async (req, res, next) => {
-//   const { id } = req.params;
-
-//   if (!req.user || !req.user._id) {
-//     return next(new CustomError("Usuario nao autenticado", 401));
-//   }
-
-//   const { email, password } = req.body;
-//   const admin = await Admin.findOne({ email }).select("+password");
-
-//   if (!mongoose.Types.ObjectId.isValid(id)) {
-//     return next(new CustomError("AccountId inválido", 400));
-//   }
-
-//   try {
-//     const requestingAdmin = await Admin.findById(req.user._id);
-//     const adminToDelete = await Admin.findById(id);
-
-//     if (!adminToDelete) {
-//       throw new CustomError("Admin nao encontrado", 404);
-//     }
-
-//     if (adminToDelete.master) {
-//       throw new CustomError("Nao pode-se deletar um Admin mestre", 403);
-//     }
-
-//     if (requestingAdmin._id.equals(adminToDelete._id)) {
-//       throw new CustomError("Voce nao pode deletar sua propria conta", 403);
-//     }
-
-//     await adminToDelete.deleteOne();
-
-//     res.status(200).send({ message: "Admin deletado com sucesso" });
-//   } catch (err) {
-//     next(err);
-//   }
-// };
-
 const deleteAdmin = async (req, res, next) => {
   try {
     const { email, password } = req.body;

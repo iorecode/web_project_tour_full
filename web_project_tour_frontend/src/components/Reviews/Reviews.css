@@ -1,4 +1,4 @@
-.review{
+.review {
     height: 95%;
     width: 100%;
     border-radius: 10px;
@@ -14,28 +14,34 @@
     color: black;
 }
 
-.review::before{
+.review::before {
     content: "";
     position: absolute;
     z-index: -1;
-    top: -15px;
-    right: -15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: #578E7E;
-    height:100%;
     width: 25px;
     border-radius: 32px;
-    transform: scale(1);
-    transform-origin: 50% 50%;
+    transform: scaleX(0);
+    transform-origin: left center;
     transition: transform 0.25s ease-out;
 }
 
-.review:hover:before{
-    transition-delay: 0.1s;
-    transform: scale(100);
+.review:hover::before {
+    transform: scaleX(1);
+    width: 100%;
+    border-radius: 10px; 
 }
 
 .review:hover{
     color: #FFFAEC;
+}
+
+.review__content{
+    padding: 5px;
 }
 
 .review__title{

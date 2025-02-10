@@ -32,9 +32,11 @@ function Reviews({ reviews }) {
 
     return (
       <div className="review">
+        <div className="review__content">
         <p className="review__title">{review.title} - {review.place}</p>
         <p className="review__description">"{review.description}"</p>
         <p className="review__rating">{filledStars}{emptyStars}</p>
+        </div>
       </div>
     );
   }

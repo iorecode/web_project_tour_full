@@ -14,12 +14,12 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
 
   function handleEmailChange(e) {
     setEmail(e.target.value);
-    setIsFormValid(emailRegex.test(e.target.value) && password.length >= 8);
+    setIsFormValid(emailRegex.test(e.target.value) && password.length >= 6);
   }
 
   function handlePasswordChange(e) {
     setPassword(e.target.value);
-    setIsFormValid(emailRegex.test(email) && e.target.value.length >= 8);
+    setIsFormValid(emailRegex.test(email) && e.target.value.length >= 6);
   }
 
   function handleCheckboxChange(e) {
@@ -34,32 +34,36 @@ function Login({ isOpen, onClose, onLoginSuccess, onReturnClick, onLogin, create
     e.preventDefault();
     if (!isFormValid) {
       return setErrorMessage("Email ou senha inválidos.");
-    } else {
-      const cleanEmail = email.trim();
-      const cleanPassword = password.trim();
-      const token = onLogin({ email: cleanEmail, password:cleanPassword });
-        if(token){
-        if(isRememberChecked){
-          localStorage.setItem("jwt", token)
+    }
+  
+    const cleanEmail = email.trim();
+    const cleanPassword = password.trim();
+
+    try {
+      const token = await onLogin({ email: cleanEmail, password: cleanPassword });
+      if (token) {
+        if (isRememberChecked) {
+          localStorage.setItem("jwt", token);
         } else {
           sessionStorage.setItem("jwt", token);
         }
         setErrorMessage("");
         onLoginSuccess();
-        } else {
-          return setErrorMessage("Email ou senha inválidos.");
-        }
+      } else {
+        setErrorMessage("Email ou senha inválidos.");
       }
+    } catch (error) {
+      console.error("Erro durante o login:", error);
+      setErrorMessage(error.message);
     }
+  }
 
     function handleTestAccess() {
       const token = createTestAccess();
-      console.log("Token:", token);
       if(token){
         if(isRememberChecked){
           localStorage.setItem("jwt", token)
         } else {
-          // Store token in sessionStorage for session-based login
           sessionStorage.setItem("jwt", token);
         }
         setErrorMessage("");

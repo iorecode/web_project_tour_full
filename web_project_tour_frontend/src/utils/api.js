@@ -1,5 +1,5 @@
 class API {
-    constructor(baseURL) {
+    constructor(baseURL = import.meta.env.VITE_API_BASE_URL) {
       this._baseURL = baseURL;
     }
   
@@ -231,15 +231,14 @@ class API {
           .then(this._checkResponse)
           .then((res) => {
             if (res.token) {
-              localStorage.setItem("jwt", res.token);
-              return res.token;
+              return res.token; 
             } else {
               throw new Error("Token não encontrado na resposta");
             }
           })
           .catch((err) => {
             console.error("Erro ao fazer login:", err);
-            return Promise.reject(err);
+            return Promise.reject(err); 
           });
       }
 
@@ -278,6 +277,6 @@ class API {
       }
   }
       
-  const api = new API('http://localhost:3000');
+  const api = new API();
   
   export default api;

@@ -69,7 +69,7 @@
   
 @media screen and (max-width: 728px) {
   .header__title{
-    font-size: 48px;
+    font-size: 44px;
   }
  
   .header__text{
@@ -84,7 +84,23 @@
   }
 
   .header__title{
-    font-size: 42px;
+    font-size: 38px;
+    padding-top: 55px;
+  }
+ 
+  .header__text{
+    font-size: 18px;
+  }
+
+}
+
+@media screen and (max-height: 378px) {
+  .header{
+    height: 60vh;
+  }
+
+  .header__title{
+    font-size: 38px;
     padding-top: 55px;
   }
  

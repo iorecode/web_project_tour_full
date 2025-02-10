@@ -2,6 +2,8 @@
 
 O **Placeholder Turismo** é uma plataforma desenvolvida com **React.js** no frontend e **Node.js** no backend, utilizando **MongoDB** como banco de dados. O sistema permite criar, editar e remover ofertas de pacotes turísticos, além de adicionar, visualizar e excluir avaliações de locais. Conta com um painel administrativo para gerenciar as funcionalidades de forma segura e eficiente.
 
+O site pode ser acessado [http://wtr.heidel.ro](https://wtr.heidel.ro) e a api em [http://api.wtr.heidel.ro](https://api.wtr.heidel.ro).
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **Frontend**: React.js com React Router para navegação.
@@ -11,9 +13,9 @@ O **Placeholder Turismo** é uma plataforma desenvolvida com **React.js** no fro
 ## 🚀 Como Rodar o Projeto
 
 1. **Backend**: Configure o MongoDB, instale as dependências (`npm install`), adicione as variáveis de ambiente no arquivo `.env` (como `MONGO_URI` e `JWT_SECRET`) e inicie o servidor com `npm start`.
-2. **Frontend**: Instale as dependências, configure o arquivo `.env` com `REACT_APP_API_URL` apontando para o backend e inicie o servidor com `npm start`.
+2. **Frontend**: Instale as dependências, configure o arquivo `.env` com `REACT_APP_API_URL` apontando para o backend e inicie o servidor com `npm start`. Crie um arquivo `.env` aqui tambem e atribua o valor de `VITE_API_BASE_URL` para URL de sua api.
 
-O frontend estará disponível em [http://localhost:3000](http://localhost:3000) e o backend em [http://localhost:5000](http://localhost:5000).
+O frontend estará disponível em [http://localhost:5173](http://localhost:3000) e o backend em [http://localhost:3000](http://localhost:5000).
 
 ## 📂 Funcionalidades
 
